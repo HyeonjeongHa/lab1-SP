@@ -132,7 +132,6 @@ int insert_sorted_by_key (struct list_node *head, struct list_node *new_node)
         	}
 
 	}
-	
 
 	insert_node_after(current->prev, new_node);
-}
+} 

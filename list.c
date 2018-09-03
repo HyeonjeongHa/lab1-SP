@@ -50,6 +50,7 @@ void del_node (struct list_node *node)
 	
 	node->prev->next = node->next;
 	node->next->prev = node->prev;
+	free(node);
 }
 
 /*	

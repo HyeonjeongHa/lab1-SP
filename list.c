@@ -12,9 +12,11 @@ set the key value to the key provided by the argument
 struct list_node *allocate_node_with_key(int key)
 {
 	struct list_node* node = (struct list_node*)malloc(sizeof(struct list_node));
+	
 	node->prev = NULL;
 	node->next = NULL;
 	node->key = key;
+	return node;
 }
 
 /*	
@@ -40,7 +42,11 @@ void insert_node_after (struct list_node *node, struct list_node *new_node)
 	node->next->prev = new_node;
 	new_node->prev = node;
 	node->next = new_node;
-	
+	/*struct list_node *fianl = node->next;
+	node->next = new_node;
+	new_node->next= final;
+	now_node->prev = ??
+	final->prev =??*/
 }
 /*	
 Remove the *node* from the list
@@ -68,6 +74,9 @@ struct list_node *search_list (struct list_node *head, int search_key)
 	}
 	while(current->key!=search_key);		
 	
+	if(current==head->prev){
+		return NULL;
+	}
 	return current;
 	
 }
@@ -117,6 +126,9 @@ void iterate_print_keys (struct list_node *head)
 		current = current->next;
 		printf("%d\n", current->key);
 	}while(current->next!=head);
+	/*struct list_node *node = head->next;
+	while*node!=tail){
+	}*/
 
 }
 
@@ -135,4 +147,5 @@ int insert_sorted_by_key (struct list_node *head, struct list_node *new_node)
 	}
 
 	insert_node_after(current->prev, new_node);
+	return 0;
 } 
